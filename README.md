@@ -71,10 +71,20 @@ npm run watch # auto build on changes
 # see package.json for more actions, many link to streamdeck CLI
 ```
 
-### After changes
+### Pickup Changes
 
 - `pi.html` - Just switch buttons in the StreamDeck button editor app to reload the Property Inspector page (HTML/css/etc)
     - Like refreshing a browser tab 
+
+### Logs
+
+```fish
+# TODO check how rollover works on log files, is the StreamDeck.json always latest logs? or the .0/.1/.2 etc?
+npm run logs-sdjson-kmtrigger
+# see package.json for more log commands
+
+```
+
 
 ### How it Works
 

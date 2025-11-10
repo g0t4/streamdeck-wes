@@ -11,7 +11,9 @@
         "restart": "streamdeck restart com.wes.kmtrigger",
         "stop": "streamdeck stop com.wes.kmtrigger",
         "validate": "streamdeck validate ./com.wes.kmtrigger.sdPlugin",
-        "package": "node scripts/package.js"
+        "package": "node scripts/package.js",
+        "logs-sdjson-kmtrigger": "tail -F ~/Library/Logs/ElgatoStreamDeck/StreamDeck.json | grep kmtrigger --line-buffered | jq --compact-output",
+        "logs-sdjson-all": "tail -F ~/Library/Logs/ElgatoStreamDeck/StreamDeck.json | grep kmtrigger --line-buffered | jq --compact-output"
     },
     "keywords": [ "streamdeck", "keyboard-maestro", "elgato" ],
     "author": "",
