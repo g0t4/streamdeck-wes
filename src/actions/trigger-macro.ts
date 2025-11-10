@@ -4,11 +4,11 @@ import { action, KeyDownEvent, SingletonAction, WillAppearEvent } from "@elgato/
  * An example action class that displays a count that increments by one each time the button is pressed.
  */
 @action({ UUID: "com.wes.kmtrigger.macro" })
-export class IncrementCounter extends SingletonAction<CounterSettings> {
+export class TriggerMacro extends SingletonAction<CounterSettings> {
 	/**
 	 * The {@link SingletonAction.onWillAppear} event is useful for setting the visual representation of an action when it becomes visible. This could be due to the Stream Deck first
 	 * starting up, or the user navigating between pages / folders etc.. There is also an inverse of this event in the form of {@link streamDeck.client.onWillDisappear}. In this example,
-	 * we're setting the title to the "count" that is incremented in {@link IncrementCounter.onKeyDown}.
+	 * we're setting the title to the "count" that is incremented in {@link TriggerMacro.onKeyDown}.
 	 */
 	override onWillAppear(ev: WillAppearEvent<CounterSettings>): void | Promise<void> {
 		return ev.action.setTitle(`${ev.payload.settings.count ?? 0}`);
@@ -34,7 +34,7 @@ export class IncrementCounter extends SingletonAction<CounterSettings> {
 }
 
 /**
- * Settings for {@link IncrementCounter}.
+ * Settings for {@link TriggerMacro}.
  */
 type CounterSettings = {
 	count?: number;

@@ -1,9 +1,9 @@
 import streamDeck, { LogLevel } from "@elgato/streamdeck";
 
-import { IncrementCounter } from "./actions/increment-counter";
+import { TriggerMacro } from "./actions/increment-counter";
 
 streamDeck.logger.setLevel(LogLevel.TRACE);
 
-streamDeck.actions.registerAction(new IncrementCounter());
+streamDeck.actions.registerAction(new TriggerMacro());
 
 streamDeck.connect();
