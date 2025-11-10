@@ -10,27 +10,13 @@ A Stream Deck plugin to trigger Keyboard Maestro macros with a button press.
 - Pass optional parameters to macros
 - Refresh macro list with a button click
 
-## Requirements
+## Requirements (tested with, minimums)
 
-- macOS 10.11 or later
-- Stream Deck 4.1 or later
-- Keyboard Maestro 8 or later
-- Node.js 20 or later (bundled with Stream Deck)
-
-## Installation
-
-### Option 1: Install from file
-
-1. Build the plugin (see Development section below)
-2. Double-click `com.wes.kmtrigger.sdPlugin` to install
-
-### Option 2: Development installation
-
-1. Clone this repository
-2. Install dependencies: `npm install`
-3. Build the plugin: `npm run build`
-4. Create a symlink to the plugin folder: `npm run devlink`
-5. Restart Stream Deck software
+- macOS 15.6.1
+- Stream Deck 7.0
+- Keyboard Maestro 11
+- Node.js 20.19.0 (bundled with Stream Deck)
+    - Check installed version, i.e. 'ls /Applications/Elgato Stream Deck.app/Contents/Helpers/node20'
 
 ## Usage
 
@@ -59,20 +45,29 @@ A Stream Deck plugin to trigger Keyboard Maestro macros with a button press.
 └── tsconfig.json
 ```
 
-### Building
+### Setup
 
 ```bash
-# Install dependencies
 npm install
 
-# Build TypeScript
 npm run build
 
-# Link plugin to Stream Deck (for development)
-npm run devlink
+# install streamdeck CLI
+npm install -g @elgato/cli@latest
+# provides streamdeck command:
+streamdeck --help
 
-# Watch mode (auto-rebuild on changes)
-npm run watch
+# * link to use in StreamDeck
+npm run link # uses streamdeck link under the hood
+streamdeck list # confirm linked
+# or check plugins dir:
+ls ~/Library/Application\ Support/com.elgato.StreamDeck/Plugins
+
+npm run restart # (re)start plugin
+
+npm run watch # auto build on changes
+
+# see package.json for more actions, many link to streamdeck CLI
 ```
 
 ### How it Works
@@ -95,23 +90,9 @@ npm run watch
 
 ## Troubleshooting
 
-### Plugin doesn't appear in Stream Deck
-
-- Make sure Node.js 20+ is available
-- Check Stream Deck logs: `~/Library/Logs/StreamDeck/`
+- Check Stream Deck logs: `~/Library/Logs/ElgatoStreamDeck`
 - Restart Stream Deck software
-
-### Macros don't execute
-
 - Ensure Keyboard Maestro Engine is running
-- Check that the macro is enabled in Keyboard Maestro
-- Verify the macro has "Execute" permissions
-
-### Macro list doesn't load
-
-- Make sure Keyboard Maestro is installed and running
-- Try clicking the refresh button in the property inspector
-- Check that Keyboard Maestro has necessary permissions in System Preferences
 
 ## Credits
 
