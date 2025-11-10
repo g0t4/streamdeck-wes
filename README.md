@@ -76,6 +76,15 @@ npm run watch # auto build on changes
 
 # see package.json for more actions, many link to streamdeck CLI
 ```
+### Security
+
+```sh
+# edit manifest.json
+#   disable node debugging
+#     set Debug="Disabled"
+#     and/or change the port for debugging
+#   TODO! does `streamdeck pack` disable this?
+```
 
 ### Pickup Changes
 
