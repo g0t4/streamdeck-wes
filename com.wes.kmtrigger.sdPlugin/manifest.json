@@ -38,5 +38,6 @@
     "Nodejs": {
         "Version": "20",
         "Debug": "enabled"
-    }
+    },
+    "UUID": "com.wes.kmtrigger"
 }
