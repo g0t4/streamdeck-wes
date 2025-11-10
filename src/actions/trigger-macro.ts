@@ -8,6 +8,7 @@ import {
     JsonValue,
     SendToPluginEvent,
     TitleParametersDidChangeEvent,
+    Target,
 } from "@elgato/streamdeck";
 
 @action({ UUID: "com.wes.kmtrigger.macro" })
@@ -33,10 +34,14 @@ export class TriggerMacro extends SingletonAction<CounterSettings> {
         const svg = `<svg width="100" height="100">
                                         <circle fill="${isRed ? "red" : "blue"}" r="45" cx="50" cy="50" ></circle>
                                 </svg>`;
-        ev.action.setImage(`data:image/svg+xml,${encodeURIComponent(svg)}`);
+        // can set image path too
+        // ev.action.setImage(`data:image/svg+xml,${encodeURIComponent(svg)}`, {
+        //     // target: Target.Software
+        //     // target: Target.Hardware
+        //     // target: Target.HardwareAndSoftware
+        // });
+
         ev.action.setSettings({ count: count + 1 });
-
-
 
         // Update the current count in the action's settings, and change the title.
         await ev.action.setSettings(settings);
