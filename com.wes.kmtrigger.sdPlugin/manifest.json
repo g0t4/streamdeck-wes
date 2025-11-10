@@ -1,42 +1,42 @@
 {
-  "Actions": [
-    {
-      "Icon": "action",
-      "Name": "Trigger KM Macro",
-      "States": [
+    "Actions": [
         {
-          "Image": "action",
-          "FontSize": "18",
-          "FontStyle": "Bold",
-          "TitleAlignment": "middle",
-          "TitleColor": "#ffffff"
+            "Icon": "action",
+            "Name": "Trigger KM Macro",
+            "States": [
+                {
+                    "Image": "action",
+                    "FontSize": "18",
+                    "FontStyle": "Bold",
+                    "TitleAlignment": "middle",
+                    "TitleColor": "#ffffff"
+                }
+            ],
+            "Tooltip": "Execute a Keyboard Maestro Macro",
+            "UUID": "com.wes.kmtrigger.action"
         }
-      ],
-      "Tooltip": "Execute a Keyboard Maestro Macro",
-      "UUID": "com.wes.kmtrigger.action"
+    ],
+    "SDKVersion": 2,
+    "Author": "wesdemos",
+    "CodePath": "bin/plugin.js",
+    "CodePathMac": "bin/plugin.js",
+    "PropertyInspectorPath": "pi.html",
+    "Description": "Execute Keyboard Maestro macros from Stream Deck",
+    "Name": "KM Trigger",
+    "Icon": "action",
+    "URL": "https://github.com/g0t4/streamdeck-km",
+    "Version": "1.0.0",
+    "OS": [
+        {
+            "Platform": "mac",
+            "MinimumVersion": "10.11"
+        }
+    ],
+    "Software": {
+        "MinimumVersion": "7.0"
+    },
+    "Nodejs": {
+        "Version": "20",
+        "Debug": "enabled"
     }
-  ],
-  "SDKVersion": 2,
-  "Author": "wesdemos",
-  "CodePath": "bin/plugin.js",
-  "CodePathMac": "bin/plugin.js",
-  "PropertyInspectorPath": "pi.html",
-  "Description": "Execute Keyboard Maestro macros from Stream Deck",
-  "Name": "KM Trigger",
-  "Icon": "action",
-  "URL": "https://github.com/g0t4/streamdeck-km",
-  "Version": "1.0.0",
-  "OS": [
-    {
-      "Platform": "mac",
-      "MinimumVersion": "10.11"
-    }
-  ],
-  "Software": {
-    "MinimumVersion": "7.0"
-  },
-  "Nodejs": {
-    "Version": "20",
-    "Debug": "enabled"
-  }
 }
