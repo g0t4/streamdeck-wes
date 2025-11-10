@@ -35,13 +35,16 @@ export class TriggerMacro extends SingletonAction<CounterSettings> {
                                         <circle fill="${isRed ? "red" : "blue"}" r="45" cx="50" cy="50" ></circle>
                                 </svg>`;
         // can set image path too
-        // ev.action.setImage(`data:image/svg+xml,${encodeURIComponent(svg)}`, {
+        // await ev.action.setImage(`data:image/svg+xml,${encodeURIComponent(svg)}`, {
         //     // target: Target.Software
         //     // target: Target.Hardware
         //     // target: Target.HardwareAndSoftware
         // });
 
         ev.action.setSettings({ count: count + 1 });
+
+        // await ev.action.showAlert();
+        // await ev.action.showOk();
 
         // Update the current count in the action's settings, and change the title.
         await ev.action.setSettings(settings);
