@@ -13,6 +13,13 @@ export class TriggerMacro extends SingletonAction<CounterSettings> {
         settings.fuckBy ??= 1;
         settings.count = (settings.count ?? 0) + settings.fuckBy;
 
+        // this.actions.forEach((a: Action) => {
+        //     console.log("action", a);
+        // })
+        console.log("action", action);
+
+
+
         // Update the current count in the action's settings, and change the title.
         await ev.action.setSettings(settings);
         await ev.action.setTitle(`${settings.count}`);

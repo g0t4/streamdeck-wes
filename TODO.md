@@ -12,6 +12,12 @@ vs AppleScript, etc
 
 ## Nice to Haves
 
+
+- SETUP real hot reload (would have to wrap in plugin setup or smth b/c I can't control plugin process creation)
+  - currently this restarts the plugin on every change (which is not hot reload, even though the docs allege it is! https://docs.elgato.com/streamdeck/sdk/guides/actions)
+  - I added opening the devtools (albiet annoying) but still convenient 
+  - could add watch that rebuilds and then on end restart but not attach devtools if that's annoying
+
 - Set `Category` in manifest.json
   - MUST SET `CategoryIcon` too to use this
   - FYI `CUSTOM` category is FINE FOR NOW!
