@@ -63,7 +63,11 @@ streamdeck list # confirm linked
 # or check plugins dir:
 ls ~/Library/Application\ Support/com.elgato.StreamDeck/Plugins
 
+# * restart sandboxed plugin process
 npm run restart # (re)start plugin
+# https://github.com/elgatosf/cli/blob/main/src/commands/restart.ts (source for restart command), uses:
+open streamdeck://plugins/restart/com.wes.kmtrigger # alternative
+
 npm run validate # check if any issues w/ streamdeck validate CLI
 
 npm run watch # auto build on changes
