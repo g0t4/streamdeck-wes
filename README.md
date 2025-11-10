@@ -71,6 +71,11 @@ npm run watch # auto build on changes
 # see package.json for more actions, many link to streamdeck CLI
 ```
 
+### After changes
+
+- `pi.html` - Just switch buttons in the StreamDeck button editor app to reload the Property Inspector page (HTML/css/etc)
+    - Like refreshing a browser tab 
+
 ### How it Works
 
 1. **Plugin Backend** (`src/plugin.ts`):
