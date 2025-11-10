@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "devlink": "ln -sf \"$(pwd)/com.wes.kmtrigger.sdPlugin\" ~/Library/Application\\ Support/com.elgato.StreamDeck/Plugins/",
+    "link": "streamdeck link com.wes.kmtrigger.sdPlugin",
     "package": "node scripts/package.js"
   },
   "keywords": ["streamdeck", "keyboard-maestro", "elgato"],
