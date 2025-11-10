@@ -51,13 +51,20 @@ export class TriggerMacro extends SingletonAction<CounterSettings> {
         await ev.action.setTitle(`${settings.count}`);
     }
 
-    override onSendToPlugin(ev: SendToPluginEvent<JsonValue, CounterSettings>): Promise<void> | void {
-        // message from property inspector (client)
+    override onSendToPlugin(ev: SendToPluginEvent<MySendToPlugin, CounterSettings>): Promise<void> | void {
+        console.log("onSendToPlugin", ev);
+        if (ev.payload?.event === 'list-macros') {
+            console.log("LIST-MACROS");
+        }
     }
 
     // override onTitleParametersDidChange(ev: TitleParametersDidChangeEvent<CounterSettings>): Promise<void> | void {
     //     console.log("Title parameters changed:", ev);
     // }
+}
+
+type MySendToPlugin = {
+    event: string;
 }
 
 /**
