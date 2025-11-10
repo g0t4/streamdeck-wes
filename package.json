@@ -14,7 +14,8 @@
         "pack": "streamdeck pack com.wes.kmtrigger.sdPlugin",
         "pack-dryrun": "streamdeck pack --dry-run com.wes.kmtrigger.sdPlugin",
         "logs-sdjson-kmtrigger": "tail -F ~/Library/Logs/ElgatoStreamDeck/StreamDeck.json | grep kmtrigger --line-buffered | jq --compact-output",
-        "logs-sdjson-all": "tail -F ~/Library/Logs/ElgatoStreamDeck/StreamDeck.json | grep kmtrigger --line-buffered | jq --compact-output"
+        "logs-sdjson-all": "tail -F ~/Library/Logs/ElgatoStreamDeck/StreamDeck.json | grep kmtrigger --line-buffered | jq --compact-output",
+        "devtools": "open -a 'Brave Browser Beta' \"devtools://devtools/bundled/inspector.html?ws=127.0.0.1:12345/$(curl -s http://127.0.0.1:12345/json/list | jq -r '.[0].id')\""
     },
     "keywords": [ "streamdeck", "keyboard-maestro", "elgato" ],
     "author": "",
