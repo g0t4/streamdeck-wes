@@ -47,6 +47,8 @@ A Stream Deck plugin to trigger Keyboard Maestro macros with a button press.
 
 ### Setup
 
+Guides: https://docs.elgato.com/streamdeck/sdk/introduction/your-first-changes
+
 ```bash
 npm install
 
