@@ -1,4 +1,14 @@
-import { action, KeyDownEvent, SingletonAction, WillAppearEvent } from "@elgato/streamdeck";
+import {
+    action,
+    KeyDownEvent,
+    SingletonAction,
+    WillAppearEvent,
+    Logger,
+    Action,
+    JsonValue,
+    SendToPluginEvent,
+    TitleParametersDidChangeEvent,
+} from "@elgato/streamdeck";
 
 @action({ UUID: "com.wes.kmtrigger.macro" })
 export class TriggerMacro extends SingletonAction<CounterSettings> {
@@ -18,12 +28,28 @@ export class TriggerMacro extends SingletonAction<CounterSettings> {
         // })
         console.log("action", action);
 
+        const count = ev.payload.settings.count ?? 0;
+        const isRed = count % 2 === 0;
+        const svg = `<svg width="100" height="100">
+                                        <circle fill="${isRed ? "red" : "blue"}" r="45" cx="50" cy="50" ></circle>
+                                </svg>`;
+        ev.action.setImage(`data:image/svg+xml,${encodeURIComponent(svg)}`);
+        ev.action.setSettings({ count: count + 1 });
+
 
 
         // Update the current count in the action's settings, and change the title.
         await ev.action.setSettings(settings);
         await ev.action.setTitle(`${settings.count}`);
     }
+
+    override onSendToPlugin(ev: SendToPluginEvent<JsonValue, CounterSettings>): Promise<void> | void {
+        // message from property inspector (client)
+    }
+
+    // override onTitleParametersDidChange(ev: TitleParametersDidChangeEvent<CounterSettings>): Promise<void> | void {
+    //     console.log("Title parameters changed:", ev);
+    // }
 }
 
 /**
