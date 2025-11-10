@@ -22,7 +22,7 @@ export class KeyboardMaestroHelper {
     try {
       // Use JXA (JavaScript for Automation) for easier JSON output
       const jxaScript = `
-        const km = Application('Keyboard Maestro Engine');
+        const km = Application('Keyboard Maestro');
         const groups = [];
 
         const allGroups = km.macroGroups();
@@ -68,7 +68,7 @@ export class KeyboardMaestroHelper {
     try {
       // Simple approach: just get macro names and IDs
       const script = `
-        tell application "Keyboard Maestro Engine"
+        tell application "Keyboard Maestro"
           set output to ""
           set allGroups to every macro group
 
