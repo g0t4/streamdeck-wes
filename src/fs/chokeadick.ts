@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { homedir } from "os";
 import { streamDeck } from "@elgato/streamdeck";
-import { config } from "../km/titles";
+import { config, update_title } from "../km/titles";
 const logger = streamDeck.logger.createScope("fs.chokeadick");
 
 // * PATHS
@@ -71,15 +71,9 @@ export function chokit() {
 
         // {"log_threshold_text":"INFO","rag":{"enabled":true},"notify_stats":false,"predictions":{"enabled":true},"verbose_logs":false,"log_threshold":"INFO","fim":{"model":"gptoss"}}
         logger.trace("fim.model", parsed.fim.model);
-        streamDeck.actions.forEach(a => {
-            a.getSettings().then(s => {
-                const title_path = s.dynamic_title;
-                if (!title_path) {
-                    return;
-                }
-                const fn = Function("config", `with(config){ return ${title_path}; }`);
-                const resolved = fn(config);
-                a.setTitle(resolved ?? '');
+        streamDeck.actions.forEach(action => {
+            action.getSettings().then(settings => {
+                update_title(action, settings);
             });
         });
     }

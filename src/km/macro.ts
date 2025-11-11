@@ -11,7 +11,7 @@ import {
     streamDeck,
 } from "@elgato/streamdeck";
 import { KeyboardMaestroHelper } from './client';
-import { config } from "./titles";
+import { config, update_title } from "./titles";
 
 type TriggerMacroSettings = {
     macro_uuid?: string;
@@ -21,16 +21,8 @@ type TriggerMacroSettings = {
 
 @action({ UUID: "com.wes.streamdeck.km.macro" })
 export class TriggerMacro extends SingletonAction<TriggerMacroSettings> {
-
     override async onWillAppear(ev: WillAppearEvent<TriggerMacroSettings>): Promise<void> {
-        const title_path = ev.payload.settings.dynamic_title;
-        if (!title_path) {
-            return;
-        }
-        const fn = Function("config", `with(config){ return ${title_path}; }`);
-        const resolved = fn(config);
-        ev.action.setTitle(resolved ?? '');
-        return;
+        update_title(ev.action, ev.payload.settings);
     }
 
     override async onKeyDown(ev: KeyDownEvent<TriggerMacroSettings>): Promise<void> {
