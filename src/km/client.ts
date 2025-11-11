@@ -72,7 +72,7 @@ export class KeyboardMaestroHelper {
         return groups;
     }
 
-    static async executeMacro(macro_uuid: string, trigger_value?: string): Promise<void> {
+    static async executeMacro(macro_uuid: string, parameter?: string): Promise<void> {
         try {
             // * docs: 
             // https://wiki.keyboardmaestro.com/manual/Scripting#Controlling_Keyboard_Maestro_Engine_via_Scripting
@@ -80,9 +80,9 @@ export class KeyboardMaestroHelper {
 
             let script = `tell application "Keyboard Maestro Engine" to do script "${macro_uuid}"`;
 
-            if (trigger_value) {
-                const escapedParam = trigger_value.replace(/"/g, '\\"');
-                script += ` with parameter "${escapedParam}"`;
+            if (parameter) {
+                const escaped = parameter.replace(/"/g, '\\"');
+                script += ` with parameter "${escaped}"`;
             }
 
             const { stdout, stderr } = await execAsync(`osascript -e '${script}'`);

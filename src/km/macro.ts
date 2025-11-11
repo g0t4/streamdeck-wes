@@ -15,7 +15,7 @@ import { KeyboardMaestroHelper } from './client';
 
 type TriggerMacroSettings = {
     macro_uuid?: string;
-    trigger_value?: string;
+    parameter?: string;
 };
 
 @action({ UUID: "com.wes.streamdeck.km.macro" })
@@ -35,7 +35,7 @@ export class TriggerMacro extends SingletonAction<TriggerMacroSettings> {
             return;
         }
 
-        await KeyboardMaestroHelper.executeMacro(settings.macro_uuid, settings.trigger_value);
+        await KeyboardMaestroHelper.executeMacro(settings.macro_uuid, settings.parameter);
     }
 
     async sendMacrosList(ev: SendToPluginEvent<MySendToPlugin, TriggerMacroSettings>) {
