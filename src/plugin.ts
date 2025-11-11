@@ -7,6 +7,9 @@ streamDeck.logger.setLevel(LogLevel.TRACE); // min threshold to capture
 streamDeck.actions.registerAction(new TriggerMacro());
 streamDeck.connect();
 
-import { startExternalServer as startExternalWebSocketServer } from './webby';
+// import { startExternalServer as startExternalWebSocketServer } from './webby';
+// startExternalWebSocketServer();
 
-startExternalWebSocketServer();
+import * as chokeadick from "./fs/chokeadick"
+chokeadick.chokit();
+
