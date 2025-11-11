@@ -23,22 +23,12 @@ type TriggerMacroSettings = {
 export class TriggerMacro extends SingletonAction<TriggerMacroSettings> {
 
     override async onWillAppear(ev: WillAppearEvent<TriggerMacroSettings>): Promise<void> {
-        // return ev.action.setTitle(`${ev.payload.settings.count ?? 0}`);
         const title_path = ev.payload.settings.dynamic_title;
         if (!title_path) {
             return;
         }
-        // eval config object and take the path in title_path nested under neath config 
-        const parts = title_path.split('.');
-        let resolved: any = config;
-        for (const p of parts) {
-            if (resolved && typeof resolved === 'object') {
-                resolved = (resolved as any)[p];
-            } else {
-                resolved = undefined;
-                break;
-            }
-        }
+        const fn = Function("config", `with(config){ return ${title_path}; }`);
+        const resolved = fn(config);
         ev.action.setTitle(resolved ?? '');
         return;
     }
