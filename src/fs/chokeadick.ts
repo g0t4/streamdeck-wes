@@ -71,7 +71,12 @@ export function chokit() {
         logger.trace("fim.model", parsed.fim.model);
         streamDeck.actions.forEach(a => {
             // yay it works!
-            a.setTitle(parsed.fim.model);
+            a.getSettings().then(s => {
+                // logger.trace("macro", s.macro_uuid);
+                if (s.macro_uuid == "C54514EE-6074-42AD-BA43-7AC13B932F53") {
+                    a.setTitle(parsed.fim.model);
+                }
+            });
         });
     }
 
