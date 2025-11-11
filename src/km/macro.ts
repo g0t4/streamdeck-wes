@@ -30,6 +30,11 @@ export class TriggerMacro extends SingletonAction<TriggerMacroSettings> {
         // FYI can store state, IIAC across restarts too? 
         // settings.count = (settings.count ?? 0) + settings.increment
 
+        if (!settings.macro_uuid) {
+            console.log("No macro UUID set, aborting.");
+            return;
+        }
+
         await KeyboardMaestroHelper.executeMacro(settings.macro_uuid, settings.trigger_value);
     }
 
@@ -38,7 +43,7 @@ export class TriggerMacro extends SingletonAction<TriggerMacroSettings> {
             const macroGroups = await KeyboardMaestroHelper.getMacroList();
 
             // docs on format of options: https://sdpi-components.dev/docs/components/select
-            const options = macroGroups.map(g => {
+            const macrosList = macroGroups.map(g => {
                 return {
                     label: g.name,
                     children: g.macros.map(m => ({
@@ -51,7 +56,7 @@ export class TriggerMacro extends SingletonAction<TriggerMacroSettings> {
             // FYI streamDeck.ui.sendToPropertyInspector in v2.0.0 (ui.current is removed in 2, or deprecated)
             streamDeck.ui.current?.sendToPropertyInspector({
                 event: ev.payload.event,
-                items: options
+                items: macrosList
             })
         }
     }
