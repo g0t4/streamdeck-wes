@@ -102,7 +102,7 @@ pgrep -ilfa "com.wes.streamdeck"
 # IF it's not running, then check logs (next)
 # BTW, CLI args has devtools port to inspect 
 
-npm run logs-sdjson-kmtrigger
+npm run logs-sdjson-wes
 # see package.json for more log commands
 # should give you exit code / reason if it failed on restart
 # older logs are in rollover .0/.1/.2 etc

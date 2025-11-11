@@ -18,8 +18,8 @@
         "pack-dryrun": "streamdeck pack --dry-run com.wes.streamdeck.sdPlugin",
         "logs-webby": "tail -F /tmp/webby.log",
         "logs-plugin": "tail -F ./com.wes.streamdeck.sdPlugin/logs/com.wes.streamdeck.0.log | bat -l log",
-        "logs-sdjson-kmtrigger": "tail -F ~/Library/Logs/ElgatoStreamDeck/StreamDeck.json | grep kmtrigger --line-buffered | jq --compact-output",
-        "logs-sdjson-all": "tail -F ~/Library/Logs/ElgatoStreamDeck/StreamDeck.json | grep kmtrigger --line-buffered | jq --compact-output",
+        "logs-sdjson-wes": "tail -F ~/Library/Logs/ElgatoStreamDeck/StreamDeck.json | grep com.wes.streamdeck --line-buffered | jq --compact-output",
+        "logs-sdjson-all": "tail -F ~/Library/Logs/ElgatoStreamDeck/StreamDeck.json | grep com.wes.streamdeck --line-buffered | jq --compact-output",
         "clean": "trash com.wes.streamdeck.sdPlugin/{bin,logs}"
     },
     "keywords": [

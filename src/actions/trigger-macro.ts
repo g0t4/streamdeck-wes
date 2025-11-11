@@ -18,7 +18,7 @@ type TriggerMacroSettings = {
     trigger_value?: string;
 };
 
-@action({ UUID: "com.wes.streamdeck.macro" })
+@action({ UUID: "com.wes.streamdeck.km.macro" })
 export class TriggerMacro extends SingletonAction<TriggerMacroSettings> {
     // override async onWillAppear(ev: WillAppearEvent<TrigerMacroSettings>>): Promise<void> {
     //     return ev.action.setTitle(`${ev.payload.settings.count ?? 0}`);
