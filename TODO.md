@@ -1,6 +1,8 @@
+## Research
+
+SwitchToProfile - for one off scenarios to open up available keymaps? (can't load user profile, only profiles in plugin's manifest)
 
 ## Trigger timing
-
 Investigate if using keyboardmaestro CLI is faster to trigger a macro...
 
 ```sh
