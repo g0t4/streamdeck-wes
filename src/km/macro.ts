@@ -11,7 +11,7 @@ import {
     Target,
     streamDeck,
 } from "@elgato/streamdeck";
-import { KeyboardMaestroHelper } from './km';
+import { KeyboardMaestroHelper } from './data';
 
 type TriggerMacroSettings = {
     macro_uuid?: string;
