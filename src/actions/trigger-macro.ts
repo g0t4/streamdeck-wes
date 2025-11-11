@@ -13,13 +13,18 @@ import {
 } from "@elgato/streamdeck";
 import { KeyboardMaestroHelper } from './km';
 
+type TriggerMacroSettings = {
+    macro_uuid?: string;
+    trigger_value?: string;
+};
+
 @action({ UUID: "com.wes.kmtrigger.macro" })
-export class TriggerMacro extends SingletonAction<CounterSettings> {
-    // override async onWillAppear(ev: WillAppearEvent<CounterSettings>): Promise<void> {
+export class TriggerMacro extends SingletonAction<TriggerMacroSettings> {
+    // override async onWillAppear(ev: WillAppearEvent<TrigerMacroSettings>>): Promise<void> {
     //     return ev.action.setTitle(`${ev.payload.settings.count ?? 0}`);
     // }
 
-    override async onKeyDown(ev: KeyDownEvent<CounterSettings>): Promise<void> {
+    override async onKeyDown(ev: KeyDownEvent<TriggerMacroSettings>): Promise<void> {
         console.log("triggering macro...", ev);
         const { settings } = ev.payload;
         // settings.count = (settings.count ?? 0) + settings.increment
@@ -29,7 +34,7 @@ export class TriggerMacro extends SingletonAction<CounterSettings> {
         await KeyboardMaestroHelper.executeMacro(uuid);
     }
 
-    override async onSendToPlugin(ev: SendToPluginEvent<MySendToPlugin, CounterSettings>): Promise<void> | void {
+    override async onSendToPlugin(ev: SendToPluginEvent<MySendToPlugin, TriggerMacroSettings>): Promise<void> {
         if (ev.payload?.event === 'list-macros') {
             const macroGroups = await KeyboardMaestroHelper.getMacroList();
 
@@ -76,11 +81,3 @@ export class TriggerMacro extends SingletonAction<CounterSettings> {
 type MySendToPlugin = {
     event: string;
 }
-
-/**
- * Settings for {@link TriggerMacro}.
- */
-type CounterSettings = {
-    count?: number;
-    macro_uuid?: string;
-};
