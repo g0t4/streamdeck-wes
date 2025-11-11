@@ -51,7 +51,7 @@ export function startExternalServer() {
                 // streamDeck.send(
                 //     JSON.stringify({
                 //         event: "setTitle",
-                //         context: "com.wes.kmtrigger",
+                //         context: "com.wes.streamdeck",
                 //         payload: { title: payload.title },
                 //     })
                 // );

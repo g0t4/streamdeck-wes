@@ -25,15 +25,15 @@ streamDeck.system.onDidReceiveDeepLink((ev) => {
 
     // TODO! switch to using logger in SDeck
     //  any limitations?
-    streamDeck.logger.info('deeper', ev); // shows up in com.wes.kmtrigger.sdPlugin/logs/*
+    streamDeck.logger.info('deeper', ev); // shows up in com.wes.streamdeck.sdPlugin/logs/*
 
     // https://docs.elgato.com/streamdeck/sdk/guides/deep-linking
     //
     // active:
-    //   streamdeck://plugins/message/com.wes.kmtrigger/hello?name=Elgato#waving
+    //   streamdeck://plugins/message/com.wes.streamdeck/hello?name=Elgato#waving
     //
     // passive:
-    //   streamdeck://plugins/message/com.wes.kmtrigger/hello?streamdeck=hidden
+    //   streamdeck://plugins/message/com.wes.streamdeck/hello?streamdeck=hidden
     //    v7 has passive deep link (streamdeck=hidden) but it's not working for me
     //    these won't open streamdeck app (like active links)
     //

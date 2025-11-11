@@ -36,7 +36,7 @@ A Stream Deck plugin to trigger Keyboard Maestro macros with a button press.
 ├── src/
 │   ├── plugin.ts          # Main plugin code
 │   └── km-helper.ts       # Keyboard Maestro integration
-├── com.wes.kmtrigger.sdPlugin/
+├── com.wes.streamdeck.sdPlugin/
 │   ├── manifest.json      # Plugin manifest
 │   ├── pi.html           # Property Inspector UI
 │   ├── bin/              # Compiled JavaScript
@@ -70,7 +70,7 @@ streamdeck dev # make sure in dev mode, I think this is on by default? I am unsu
 streamdeck dev --disable # disable dev mode
 npm run restart # (re)start plugin
 # https://github.com/elgatosf/cli/blob/main/src/commands/restart.ts (source for restart command), uses:
-open streamdeck://plugins/restart/com.wes.kmtrigger # alternative
+open streamdeck://plugins/restart/com.wes.streamdeck # alternative
 
 npm run validate # check if any issues w/ streamdeck validate CLI
 
@@ -98,7 +98,7 @@ npm run watch # auto build on changes
 ```fish
 
 # Ensure plugin is running (node process)
-pgrep -ilfa "com.wes.kmtrigger"
+pgrep -ilfa "com.wes.streamdeck"
 # IF it's not running, then check logs (next)
 # BTW, CLI args has devtools port to inspect 
 
