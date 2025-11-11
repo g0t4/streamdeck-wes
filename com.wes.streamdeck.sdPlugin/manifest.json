@@ -21,7 +21,7 @@
     "Author": "g0t4",
     "CodePath": "bin/plugin.js",
     "CodePathMac": "bin/plugin.js",
-    "PropertyInspectorPath": "ui/trigger-macro.html",
+    "PropertyInspectorPath": "km/trigger-macro.html",
     "Description": "monorepo of streamdeck mods!",
     "Category": "Wes Mods",
     "CategoryIcon": "icons/category",
