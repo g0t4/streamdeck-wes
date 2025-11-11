@@ -38,8 +38,11 @@ export function startExternalServer() {
             log("rx msg: " + message)
             try {
                 const payload = JSON.parse(message);
-                // if (payload.title && streamDeck?.readyState === WebSocket.OPEN) {
-                streamDeck.actions.forEach(action => log('action', JSON.stringify(action)))
+                // if (streamDeck?.readyState === WebSocket.OPEN) {
+                streamDeck.actions.forEach(action => {
+                    log('action', JSON.stringify(action));
+                    action.setTitle("CHANGED!");
+                });
                 // streamDeck.send(
                 //     JSON.stringify({
                 //         event: "setTitle",
