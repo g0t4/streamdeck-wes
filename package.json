@@ -15,6 +15,7 @@
         "validate": "streamdeck validate ./com.wes.kmtrigger.sdPlugin",
         "pack": "streamdeck pack com.wes.kmtrigger.sdPlugin",
         "pack-dryrun": "streamdeck pack --dry-run com.wes.kmtrigger.sdPlugin",
+        "logs-webby": "tail -F /tmp/webby.log",
         "logs-plugin": "tail -F ./com.wes.kmtrigger.sdPlugin/logs/com.wes.kmtrigger.0.log | bat -l log",
         "logs-sdjson-kmtrigger": "tail -F ~/Library/Logs/ElgatoStreamDeck/StreamDeck.json | grep kmtrigger --line-buffered | jq --compact-output",
         "logs-sdjson-all": "tail -F ~/Library/Logs/ElgatoStreamDeck/StreamDeck.json | grep kmtrigger --line-buffered | jq --compact-output"
