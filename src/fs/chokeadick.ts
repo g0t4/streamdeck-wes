@@ -69,6 +69,10 @@ export function chokit() {
     function handleAskConfig(parsed: AskConfig) {
         // {"log_threshold_text":"INFO","rag":{"enabled":true},"notify_stats":false,"predictions":{"enabled":true},"verbose_logs":false,"log_threshold":"INFO","fim":{"model":"gptoss"}}
         logger.trace("fim.model", parsed.fim.model);
+        streamDeck.actions.forEach(a => {
+            // yay it works!
+            a.setTitle(parsed.fim.model);
+        });
     }
 
     function handleUpdate(filePath: string, parsed: any) {
