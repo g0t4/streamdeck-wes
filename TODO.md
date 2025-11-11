@@ -12,6 +12,9 @@ vs AppleScript, etc
 
 ## Nice to Haves
 
+- TODO use an env file to change PORTs... i.e. collisions
+  - would need to propagate through all usages
+  - goal - not checkin so you can have your own port w/o outstanding changes in the repo
 
 - SETUP real hot reload (would have to wrap in plugin setup or smth b/c I can't control plugin process creation)
   - currently this restarts the plugin on every change (which is not hot reload, even though the docs allege it is! https://docs.elgato.com/streamdeck/sdk/guides/actions)
