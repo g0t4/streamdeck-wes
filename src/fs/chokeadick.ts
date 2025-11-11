@@ -70,9 +70,10 @@ export function chokit() {
         // {"log_threshold_text":"INFO","rag":{"enabled":true},"notify_stats":false,"predictions":{"enabled":true},"verbose_logs":false,"log_threshold":"INFO","fim":{"model":"gptoss"}}
         logger.trace("fim.model", parsed.fim.model);
         streamDeck.actions.forEach(a => {
-            // yay it works!
+            // TODO on startup, how can I copy over the initial value? 
+            // TODO! PERHAPS this is why the button should have a dynamicTitle text box that I can put "ask.fim.model" into or similar?
             a.getSettings().then(s => {
-                // logger.trace("macro", s.macro_uuid);
+                logger.trace("macro", s.macro_uuid);
                 if (s.macro_uuid == "C54514EE-6074-42AD-BA43-7AC13B932F53") {
                     a.setTitle(parsed.fim.model);
                 }
