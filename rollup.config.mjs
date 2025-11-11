@@ -12,6 +12,11 @@ const sdPlugin = "com.wes.kmtrigger.sdPlugin";
  * @type {import('rollup').RollupOptions}
  */
 const config = {
+    // treeshake: { moduleSideEffects: true }, // rollup is just dropping modules if an export isn't used... so if I remove the function call to webby.ts's startExternalServer... rollup just says FUCK IT DROP THE WHOLE THING SIDE EFFECTS BE DAMNED!
+    //  this setting didn't do shit to fix anything and I don't care for now, but just heads up, rollup is gonna give you surprise butt sex when you least expect it
+    //  I am a fucking idiot for copying it over... FML
+    //  all for a hook on watch... so can open devtools after restart... SUCH A POS workflow
+    
     input: "src/plugin.ts",
     output: {
         file: `${sdPlugin}/bin/plugin.js`,
