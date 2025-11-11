@@ -50,6 +50,36 @@ export function chokit() {
         readFile(filePath, stats);
     });
 
+    interface AskConfig {
+        logThresholdText: string;
+        rag: {
+            enabled: boolean;
+        };
+        notifyStats: boolean;
+        predictions: {
+            enabled: boolean;
+        };
+        verboseLogs: boolean;
+        logThreshold: string;
+        fim: {
+            model: string;
+        };
+    }
+
+    function handleAskConfig(parsed: AskConfig) {
+        // {"log_threshold_text":"INFO","rag":{"enabled":true},"notify_stats":false,"predictions":{"enabled":true},"verbose_logs":false,"log_threshold":"INFO","fim":{"model":"gptoss"}}
+        logger.trace("fim.model", parsed.fim.model);
+    }
+
+    function handleUpdate(filePath: string, parsed: any) {
+        if (filePath === ask_config) {
+            handleAskConfig(parsed);
+        } else {
+            // TODO
+        }
+    }
+
+
     // unlike == remove
     // watcher.on("unlink", function (filePath: string, stats?: fs.Stats) {
     //     logger.info("unlink", filePath);
@@ -60,7 +90,7 @@ export function chokit() {
             logger.trace("contents", contents);
             const parsed = JSON.parse(contents);
             logger.trace('parsed:', parsed);
-            // handleUpdate(path.basename(relativePath), data);
+            handleUpdate(filePath, parsed);
         } catch (err) {
 
             // avoid spamming errors if file mid-write (wait and see how often this happens):
