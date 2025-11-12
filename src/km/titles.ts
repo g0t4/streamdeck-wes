@@ -20,7 +20,7 @@ export function update_title(action: Action, settings: "TriggerMacroSettings") {
         if (resolved === "qwen25coder") {
             logger.info("SET IMAGE");
             // FYI if title OR image are set in button designer, then setTitle/setImage doesn't show the title/image!
-            action.setImage("./icons/tmp/qwen.svg");
+            action.setImage("./icons/qwen.svg");
             action.setTitle("");
             // read image base64 into buffer
             // icons/qwen.svg
