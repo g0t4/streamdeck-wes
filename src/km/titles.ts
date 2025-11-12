@@ -25,12 +25,14 @@ export function update_title(action: Action, settings: "TriggerMacroSettings") {
             // read image base64 into buffer
             // icons/qwen.svg
             // action.setImage("icons/out.png");
+        } else if (resolved === "gptoss") {
+            action.setTitle("");
+            action.setImage("./icons/openai-light.svg");
         } else {
             action.setTitle(resolved ?? '');
-            // Generate a simple black SVG and set it as the button image
-            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72"><rect width="100%" height="100%" fill="black"/></svg>`;
-            const dataUrl = `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
-            action.setImage(dataUrl);
+            const black_svg = `<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72"><rect width="100%" height="100%" fill="black"/></svg>`;
+            const black_dataUrl = `data:image/svg+xml;base64,${Buffer.from(black_svg).toString('base64')}`;
+            action.setImage(black_dataUrl);
         }
     } catch (error) {
         logger.error(`💩 Holy crap, something went wrong: ${error}`);
