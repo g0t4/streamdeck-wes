@@ -68,9 +68,7 @@ export function chokit() {
 
     function handleAskConfig(parsed: AskConfig) {
         config.ask = parsed;
-
         // {"log_threshold_text":"INFO","rag":{"enabled":true},"notify_stats":false,"predictions":{"enabled":true},"verbose_logs":false,"log_threshold":"INFO","fim":{"model":"gptoss"}}
-        logger.trace("fim.model", parsed.fim.model);
         streamDeck.actions.forEach(action => {
             action.getSettings().then(settings => {
                 update_title(action, settings);
