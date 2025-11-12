@@ -50,7 +50,7 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
             }
             else if (type == "reasoning_level") {
                 const level = config?.ask?.reasoning_level;
-                action.setTitle(level);
+                action.setTitle(`think:\n${level}`);
                 action.setImage(black_dataUrl);
             }
             else if (type == "log_threshold") {
@@ -63,7 +63,9 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
                 action.setImage(black_dataUrl);
             }
             else {
-                action.setTitle('TODO dynamic type: ' + type);
+                action.setTitle('TODO\ndynamic\ntype:\n' + type, {
+                    
+                });
                 action.setImage(black_dataUrl);
             }
         } catch (error) {
