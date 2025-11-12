@@ -17,39 +17,39 @@ const black_svg = `<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72
 const black_dataUrl = `data:image/svg+xml;base64,${Buffer.from(black_svg).toString('base64')}`;
 
 export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, settings: TriggerMacroSettings) {
-    const type = settings.dynamic_type;
-    if (!type) {
-        return;
-    }
+        const type = settings.dynamic_type;
+        if (!type) {
+            return;
+        }
 
-    try {
-        if (type == "fim_model_toggle") {
-            const model = config?.ask?.fim?.model;
-            if (model === "qwen25coder") {
-                action.setImage("./icons/qwen.svg");
-                action.setTitle("");
+        try {
+            if (type == "fim_model_toggle") {
+                const model = config?.ask?.fim?.model;
+                if (model === "qwen25coder") {
+                    action.setImage("./icons/qwen.svg");
+                    action.setTitle("");
+                }
+                else if (model === "gptoss") {
+                    action.setTitle("");
+                    action.setImage("./icons/openai-light.svg");
+                }
             }
-            else if (model === "gptoss") {
-                action.setTitle("");
-                action.setImage("./icons/openai-light.svg");
+            else if (type == "reasoning_level") {
+                const level = config?.ask?.reasoning_level;
+                action.setTitle(level);
+                action.setImage(black_dataUrl);
             }
+            else if (type == "log_threshold") {
+                const threshold = config?.ask?.log_threshold_text;
+                action.setTitle(threshold);
+                action.setImage(black_dataUrl);
+            }
+            else {
+                action.setTitle('TODO dynamic type: ' + type);
+                action.setImage(black_dataUrl);
+            }
+        } catch (error) {
+            logger.error(`💩 Holy crap, something went wrong: ${error}`);
+            throw error;
         }
-        else if (type == "reasoning_level") {
-            const level = config?.ask?.reasoning_level;
-            action.setTitle(level);
-            action.setImage(black_dataUrl);
-        }
-        else if (type == "log_threshold") {
-            const threshold = config?.ask?.log_threshold_text;
-            action.setTitle(threshold);
-            action.setImage(black_dataUrl);
-        }
-        else {
-            action.setTitle('TODO dynamic type: ' + type);
-            action.setImage(black_dataUrl);
-        }
-    } catch (error) {
-        logger.error(`💩 Holy crap, something went wrong: ${error}`);
-        throw error;
-    }
 }
