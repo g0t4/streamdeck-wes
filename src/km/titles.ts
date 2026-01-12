@@ -71,9 +71,14 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
                 action.setImage(black_dataUrl);
             }
             else {
-                action.setTitle('TODO\ndynamic\ntype:\n' + type, {
-
-                });
+                if (type.length > 8) {
+                    // split every 8th char so it shows well enough
+                    const split = type.match(/.{1,8}/g)?.join('\n');
+                    action.setTitle(split ?? type, {});
+                }
+                else {
+                    action.setTitle('TODO\n' + type, {});
+                }
                 action.setImage(black_dataUrl);
             }
         } catch (error) {
