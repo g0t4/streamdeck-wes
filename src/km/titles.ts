@@ -10,7 +10,10 @@ export const config = hyperactiv.default.observe({
             model: "",
         },
         log_threshold_text: "",
-        reasoning_level: "",
+        gptoss: {
+            fim_reasoning_level: "",
+            rewrite_reasoning_level: "",
+        }
     }
 });
 
@@ -48,9 +51,14 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
                     action.setImage("./icons/openai-light.svg");
                 }
             }
-            else if (type == "reasoning_level") {
-                const level = config?.ask?.reasoning_level;
-                action.setTitle(`think:\n${level}`);
+            else if (type == "rewrite_reasoning_level") {
+                const level = config?.ask?.gptoss?.rewrite_reasoning_level;
+                action.setTitle(`rewrite:\n${level}`);
+                action.setImage(black_dataUrl);
+            }
+            else if (type == "fim_reasoning_level") {
+                const level = config?.ask?.gptoss?.fim_reasoning_level;
+                action.setTitle(`FIM:\n${level}`);
                 action.setImage(black_dataUrl);
             }
             else if (type == "log_threshold") {
@@ -64,7 +72,7 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
             }
             else {
                 action.setTitle('TODO\ndynamic\ntype:\n' + type, {
-                    
+
                 });
                 action.setImage(black_dataUrl);
             }
