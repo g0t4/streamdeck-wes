@@ -82,17 +82,17 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
             }
             else if (type == "rewrite_reasoning_level") {
                 const level = config?.ask?.gptoss?.rewrite_reasoning_level;
-                action.setTitle(`rewrite:\n${level}`);
+                action.setTitle(`re/\n${level.toUpperCase()}`);
                 action.setImage(black_dataUrl);
             }
             else if (type == "fim_reasoning_level") {
                 const level = config?.ask?.gptoss?.fim_reasoning_level;
-                action.setTitle(`FIM:\n${level}`);
+                action.setTitle(`fim/\n${level.toUpperCase()}`);
                 action.setImage(black_dataUrl);
             }
             else if (type == "agents_reasoning_level") {
                 const level = config?.ask?.gptoss?.agents_reasoning_level;
-                action.setTitle(`Agents:\n${level}`);
+                action.setTitle(`agents/\n${level.toUpperCase()}`);
                 action.setImage(black_dataUrl);
             }
             else if (type == "log_threshold") {
