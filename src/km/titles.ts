@@ -42,29 +42,22 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
         try {
             if (type == "fim_model_toggle") {
                 const model = config?.ask?.fim?.model;
-                if (model.startsWith("qwen")) {
-                    action.setImage("./icons/qwen.svg");
-                    const version = model.replace("qwen", "") // strip off Qwen prefix to get the version (if I set that in settings, leave this flexible to support any name as long as has qwen (starts with ideally))
-                    // qwen3 => "3"
-                    // qwen3.6 => "3.6"
-                    // or if just "qwen" => ""
+                function configureActionFromModel(model_prefix: string, iconPath: string): boolean {
+                    if (!model.startsWith(model_prefix))
+                        return false;
+                    action.setImage(iconPath);
+                    const version = model.replace(model_prefix, "");
                     action.setTitle(version);
+                    return true;
                 }
-                else if (model.startsWith("gptoss")) {
-                    action.setImage("./icons/openai-light.svg");
-                    const version = model.replace("gptoss", "")
-                    action.setTitle(version);
-                }
-                else if (model.startsWith("gemma")) {
-                    action.setTitle("");
-                    action.setImage("./icons/250px-Gemma_icon.png");
-                    const version = model.replace("gemma", "")
-                    action.setTitle(version);
-                }
-                else {
+                function else_default() {
                     action.setTitle(model);
                     action.setImage(black_dataUrl)
                 }
+                configureActionFromModel("qwen", "./icons/qwen.svg")
+                    || configureActionFromModel("gptoss", "./icons/openai-light.svg")
+                    || configureActionFromModel("gemma", "./icons/250px-Gemma_icon.png")
+                    || else_default()
             }
             else if (type == "rewrite_reasoning_level") {
                 const level = config?.ask?.gptoss?.rewrite_reasoning_level;
