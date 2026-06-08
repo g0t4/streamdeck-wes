@@ -43,22 +43,25 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
         try {
             if (type == "fim_model_toggle") {
                 const model = config?.ask?.fim?.model;
-                function configureActionFromModel(model_prefix: string, iconPath: string): boolean {
-                    if (!model.startsWith(model_prefix))
-                        return false;
-                    action.setImage(iconPath);
-                    const version = model.replace(model_prefix, "");
-                    action.setTitle(version);
-                    return true;
+                function agent_selection(model: string) {
+                    function configureActionFromModel(model_prefix: string, iconPath: string): boolean {
+                        if (!model.startsWith(model_prefix))
+                            return false;
+                        action.setImage(iconPath);
+                        const version = model.replace(model_prefix, "");
+                        action.setTitle(version);
+                        return true;
+                    }
+                    function else_default() {
+                        action.setTitle(model);
+                        action.setImage(black_dataUrl);
+                    }
+                    configureActionFromModel("qwen", "./icons/qwen.svg")
+                        || configureActionFromModel("gptoss", "./icons/openai-light.svg")
+                        || configureActionFromModel("gemma", "./icons/250px-Gemma_icon.png")
+                        || else_default()
                 }
-                function else_default() {
-                    action.setTitle(model);
-                    action.setImage(black_dataUrl);
-                }
-                configureActionFromModel("qwen", "./icons/qwen.svg")
-                    || configureActionFromModel("gptoss", "./icons/openai-light.svg")
-                    || configureActionFromModel("gemma", "./icons/250px-Gemma_icon.png")
-                    || else_default()
+                agent_selection(model)
             }
             else if (type == "rewrite_reasoning_level") {
                 const level = config?.ask?.gptoss?.rewrite_reasoning_level;
