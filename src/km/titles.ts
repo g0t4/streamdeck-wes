@@ -54,6 +54,10 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
                     action.setTitle("");
                     action.setImage("./icons/openai-light.svg");
                 }
+                else {
+                    action.setTitle(model);
+                    action.setImage(black_dataUrl)
+                }
             }
             else if (type == "rewrite_reasoning_level") {
                 const level = config?.ask?.gptoss?.rewrite_reasoning_level;
