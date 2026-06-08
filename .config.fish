@@ -1,0 +1,1 @@
+__local_config__pacakge_json_scripts_to_run_abbrs
