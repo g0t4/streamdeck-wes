@@ -9,7 +9,19 @@ export const config = hyperactiv.default.observe({
         fim: {
             model: "",
         },
+        rewrite: {
+            model: "",
+        },
+        agents: {
+            model: "",
+        },
         log_threshold_text: "",
+        qwen: {
+            // TODO reasoning level => budget? other controls in qwen3.6?
+        },
+        gemma4: {
+            // TODO reasoning settings? levels? or?
+        },
         gptoss: {
             fim_reasoning_level: "",
             rewrite_reasoning_level: "",
