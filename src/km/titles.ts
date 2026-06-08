@@ -59,9 +59,14 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
                 || else_default()
         }
         try {
-            if (type == "fim_model_toggle") {
-                const model = config?.ask?.fim?.model;
-                agent_selection(model)
+            if (type == "fim_model") {
+                agent_selection(config?.ask?.fim?.model)
+            }
+            else if (type == "rewrite_model") {
+                agent_selection(config?.ask?.rewrite?.model)
+            }
+            else if (type == "agents_model") {
+                agent_selection(config?.ask?.agents?.model)
             }
             else if (type == "rewrite_reasoning_level") {
                 const level = config?.ask?.gptoss?.rewrite_reasoning_level;
