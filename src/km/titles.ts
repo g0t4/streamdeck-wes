@@ -13,6 +13,7 @@ export const config = hyperactiv.default.observe({
         gptoss: {
             fim_reasoning_level: "",
             rewrite_reasoning_level: "",
+            agents_reasoning_level: "",
         }
     }
 });
@@ -52,7 +53,7 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
                 }
                 function else_default() {
                     action.setTitle(model);
-                    action.setImage(black_dataUrl)
+                    action.setImage(black_dataUrl);
                 }
                 configureActionFromModel("qwen", "./icons/qwen.svg")
                     || configureActionFromModel("gptoss", "./icons/openai-light.svg")
@@ -67,6 +68,11 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
             else if (type == "fim_reasoning_level") {
                 const level = config?.ask?.gptoss?.fim_reasoning_level;
                 action.setTitle(`FIM:\n${level}`);
+                action.setImage(black_dataUrl);
+            }
+            else if (type == "agents_reasoning_level") {
+                const level = config?.ask?.gptoss?.agents_reasoning_level;
+                action.setTitle(`Agents:\n${level}`);
                 action.setImage(black_dataUrl);
             }
             else if (type == "log_threshold") {
