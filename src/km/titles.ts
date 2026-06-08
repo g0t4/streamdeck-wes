@@ -81,16 +81,31 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
                 agent_selection(config?.ask?.agents?.model)
             }
             else if (type == "rewrite_reasoning_level") {
+                // TODO support other model reasoning levels/options
+                //  TODO only show if current model is gptoss?
+                if (config?.ask?.rewrite?.model != "gptoss") {
+                    action.setTitle(`n/a`)
+                    action.setImage(black_dataUrl);
+                    return
+                }
                 const level = config?.ask?.gptoss?.rewrite_reasoning_level;
-                action.setTitle(`re/\n${level.toUpperCase()}`);
+                action.setTitle(`rewrite/\n${level.toUpperCase()}`);
                 action.setImage(black_dataUrl);
             }
             else if (type == "fim_reasoning_level") {
+                if (config?.ask?.fim?.model != "gptoss") { action.setTitle(`n/a`)
+                    action.setImage(black_dataUrl);
+                    return
+                }
                 const level = config?.ask?.gptoss?.fim_reasoning_level;
                 action.setTitle(`fim/\n${level.toUpperCase()}`);
                 action.setImage(black_dataUrl);
             }
             else if (type == "agents_reasoning_level") {
+                if (config?.ask?.agents?.model != "gptoss") { action.setTitle(`n/a`)
+                    action.setImage(black_dataUrl);
+                    return
+                }
                 const level = config?.ask?.gptoss?.agents_reasoning_level;
                 action.setTitle(`agents/\n${level.toUpperCase()}`);
                 action.setImage(black_dataUrl);
