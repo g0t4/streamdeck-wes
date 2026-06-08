@@ -44,15 +44,22 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
                 const model = config?.ask?.fim?.model;
                 if (model.startsWith("qwen")) {
                     action.setImage("./icons/qwen.svg");
-                    const title = model.replace("qwen", "") // strip off Qwen prefix to get the version (if I set that in settings, leave this flexible to support any name as long as has qwen (starts with ideally))
+                    const version = model.replace("qwen", "") // strip off Qwen prefix to get the version (if I set that in settings, leave this flexible to support any name as long as has qwen (starts with ideally))
                     // qwen3 => "3"
                     // qwen3.6 => "3.6"
                     // or if just "qwen" => ""
-                    action.setTitle(title);
+                    action.setTitle(version);
                 }
-                else if (model === "gptoss") {
-                    action.setTitle("");
+                else if (model.startsWith("gptoss")) {
                     action.setImage("./icons/openai-light.svg");
+                    const version = model.replace("gptoss", "")
+                    action.setTitle(version);
+                }
+                else if (model.startsWith("gemma")) {
+                    action.setTitle("");
+                    action.setImage("./icons/250px-Gemma_icon.png");
+                    const version = model.replace("gemma", "")
+                    action.setTitle(version);
                 }
                 else {
                     action.setTitle(model);
