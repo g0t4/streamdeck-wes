@@ -42,9 +42,13 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
         try {
             if (type == "fim_model_toggle") {
                 const model = config?.ask?.fim?.model;
-                if (model === "qwen25coder") {
+                if (model.startsWith("qwen")) {
                     action.setImage("./icons/qwen.svg");
-                    action.setTitle("");
+                    const title = model.replace("qwen", "") // strip off Qwen prefix to get the version (if I set that in settings, leave this flexible to support any name as long as has qwen (starts with ideally))
+                    // qwen3 => "3"
+                    // qwen3.6 => "3.6"
+                    // or if just "qwen" => ""
+                    action.setTitle(title);
                 }
                 else if (model === "gptoss") {
                     action.setTitle("");
