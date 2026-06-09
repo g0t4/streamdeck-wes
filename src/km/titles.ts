@@ -52,17 +52,17 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
             return;
         }
 
-        function agent_selection(model: string) {
+        function agent_selection(model: string, title_prefix: string) {
             function configureActionFromModel(model_prefix: string, iconPath: string): boolean {
                 if (!model.startsWith(model_prefix))
                     return false;
                 action.setImage(iconPath);
                 const version = model.replace(model_prefix, "");
-                action.setTitle(version);
+                action.setTitle(`${title_prefix}${version}`);
                 return true;
             }
             function else_default() {
-                action.setTitle(model);
+                action.setTitle(`${title_prefix}${model}`);
                 action.setImage(black_dataUrl);
             }
             configureActionFromModel("qwen", "./icons/qwen.svg")
@@ -72,13 +72,13 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
         }
         try {
             if (type == "fim_model") {
-                agent_selection(config?.ask?.fim?.model)
+                agent_selection(config?.ask?.fim?.model, "fim/")
             }
             else if (type == "rewrite_model") {
-                agent_selection(config?.ask?.rewrite?.model)
+                agent_selection(config?.ask?.rewrite?.model, "re/")
             }
             else if (type == "agents_model") {
-                agent_selection(config?.ask?.agents?.model)
+                agent_selection(config?.ask?.agents?.model, "agents/")
             }
             else if (type == "rewrite_reasoning_level") {
                 // TODO support other model reasoning levels/options
