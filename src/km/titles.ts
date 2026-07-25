@@ -26,6 +26,9 @@ export const config = hyperactiv.default.observe({
             fim_reasoning_level: "",
             rewrite_reasoning_level: "",
             agents_reasoning_level: "",
+        }, 
+        glm: {
+            // TODO glm specific settings?
         }
     }
 });
@@ -68,6 +71,7 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
             configureActionFromModel("qwen", "./icons/qwen.svg")
                 || configureActionFromModel("gptoss", "./icons/openai-light.svg")
                 || configureActionFromModel("gemma", "./icons/250px-Gemma_icon.png")
+                || configureActionFromModel("glm", "./icons/glm.svg")
                 || else_default()
         }
         try {
