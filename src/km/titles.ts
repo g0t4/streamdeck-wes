@@ -17,18 +17,25 @@ export const config = hyperactiv.default.observe({
         },
         log_threshold_text: "",
         qwen: {
-            // TODO reasoning level => budget? other controls in qwen3.6?
+            fim_reasoning_level: "",
+            rewrite_reasoning_level: "",
+            agents_reasoning_level: "",
         },
         gemma4: {
-            // TODO reasoning settings? levels? or?
+            fim_reasoning_level: "",
+            rewrite_reasoning_level: "",
+            agents_reasoning_level: "",
         },
         gptoss: {
+            // Legacy gptoss-specific reasoning levels (should be replaced by model-specific ones)
             fim_reasoning_level: "",
             rewrite_reasoning_level: "",
             agents_reasoning_level: "",
         }, 
         glm: {
-            // TODO glm specific settings?
+            fim_reasoning_level: "",
+            rewrite_reasoning_level: "",
+            agents_reasoning_level: "",
         }
     }
 });
@@ -85,32 +92,20 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
                 agent_selection(config?.ask?.agents?.model, "agents/")
             }
             else if (type == "rewrite_reasoning_level") {
-                // TODO support other model reasoning levels/options
-                //  TODO only show if current model is gptoss?
-                if (config?.ask?.rewrite?.model != "gptoss") {
-                    action.setTitle(`n/a`)
-                    action.setImage(black_dataUrl);
-                    return
-                }
-                const level = config?.ask?.gptoss?.rewrite_reasoning_level;
+                const model = config?.ask?.rewrite?.model;
+                const level = (config?.ask as any)[model].rewrite_reasoning_level || "";
                 action.setTitle(`rewrite/\n${level.toUpperCase()}`);
                 action.setImage(black_dataUrl);
             }
             else if (type == "fim_reasoning_level") {
-                if (config?.ask?.fim?.model != "gptoss") { action.setTitle(`n/a`)
-                    action.setImage(black_dataUrl);
-                    return
-                }
-                const level = config?.ask?.gptoss?.fim_reasoning_level;
+                const model = config?.ask?.fim?.model;
+                const level = (config?.ask as any)[model].fim_reasoning_level || "";
                 action.setTitle(`fim/\n${level.toUpperCase()}`);
                 action.setImage(black_dataUrl);
             }
             else if (type == "agents_reasoning_level") {
-                if (config?.ask?.agents?.model != "gptoss") { action.setTitle(`n/a`)
-                    action.setImage(black_dataUrl);
-                    return
-                }
-                const level = config?.ask?.gptoss?.agents_reasoning_level;
+                const model = config?.ask?.agents?.model;
+                const level = (config?.ask as any)[model].agents_reasoning_level || "";
                 action.setTitle(`agents/\n${level.toUpperCase()}`);
                 action.setImage(black_dataUrl);
             }
