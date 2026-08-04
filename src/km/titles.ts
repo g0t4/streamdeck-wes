@@ -32,7 +32,6 @@ export const config = hyperactiv.default.observe({
             agents_reasoning_level: "",
         },
         gptoss: {
-            // Legacy gptoss-specific reasoning levels (should be replaced by model-specific ones)
             fim_reasoning_level: "",
             rewrite_reasoning_level: "",
             agents_reasoning_level: "",
