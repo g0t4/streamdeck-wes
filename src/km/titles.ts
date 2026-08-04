@@ -26,6 +26,11 @@ export const config = hyperactiv.default.observe({
             rewrite_reasoning_level: "",
             agents_reasoning_level: "",
         },
+        deepseek: {
+            fim_reasoning_level: "",
+            rewrite_reasoning_level: "",
+            agents_reasoning_level: "",
+        },
         gptoss: {
             // Legacy gptoss-specific reasoning levels (should be replaced by model-specific ones)
             fim_reasoning_level: "",
@@ -78,6 +83,7 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
             configureActionFromModel("qwen", "./icons/qwen.svg")
                 || configureActionFromModel("gptoss", "./icons/openai-light.svg")
                 || configureActionFromModel("gemma", "./icons/250px-Gemma_icon.png")
+                || configureActionFromModel("deepseek", "./icons/deepseek-whale-only.svg.png")
                 || configureActionFromModel("glm", "./icons/glm.svg")
                 || else_default()
         }
