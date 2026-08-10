@@ -40,6 +40,11 @@ export const config = hyperactiv.default.observe({
             fim_reasoning_level: "",
             rewrite_reasoning_level: "",
             agents_reasoning_level: "",
+        },
+        muse: {
+            fim_reasoning_level: "",
+            rewrite_reasoning_level: "",
+            agents_reasoning_level: "",
         }
     }
 });
@@ -84,6 +89,7 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
                 || configureActionFromModel("gemma", "./icons/250px-Gemma_icon.png")
                 || configureActionFromModel("deepseek", "./icons/deepseek-whale-only.svg.png")
                 || configureActionFromModel("glm", "./icons/glm.svg")
+                || configureActionFromModel("muse", "./icons/muse-orbit.png")
                 || else_default()
         }
         try {
