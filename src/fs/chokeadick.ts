@@ -51,7 +51,6 @@ export function chokit() {
     });
 
     interface AskConfig {
-        logThresholdText: string;
         rag: {
             enabled: boolean;
         };
@@ -60,7 +59,6 @@ export function chokit() {
             enabled: boolean;
         };
         verboseLogs: boolean;
-        logThreshold: string;
         fim: {
             model: string;
         };
@@ -69,7 +67,7 @@ export function chokit() {
     function handleAskConfig(parsed: AskConfig) {
         config.ask = parsed;
         // TODO remove this old pathway to manually trigger all buttons to update (when any config changes)... remove this after you're happy with hyperactiv (not causing issues)
-        // {"log_threshold_text":"INFO","rag":{"enabled":true},"notify_stats":false,"predictions":{"enabled":true},"verbose_logs":false,"log_threshold":"INFO","fim":{"model":"gptoss"}}
+        // {"rag":{"enabled":true},"notify_stats":false,"predictions":{"enabled":true},"verbose_logs":false,"fim":{"model":"gptoss"}}
         // streamDeck.actions.forEach(action => {
         //     action.getSettings().then(settings => {
         //         update_dynamic_button(action, settings);

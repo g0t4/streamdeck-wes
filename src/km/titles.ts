@@ -15,7 +15,6 @@ export const config = hyperactiv.default.observe({
         agents: {
             model: "",
         },
-        log_threshold_text: "",
         qwen: {
             fim_reasoning_level: "",
             rewrite_reasoning_level: "",
@@ -118,11 +117,6 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
                 const model = config?.ask?.agents?.model;
                 const level = (config?.ask as any)[model].agents_reasoning_level || "";
                 action.setTitle(`agents/\n${level.toUpperCase()}`);
-                action.setImage(black_dataUrl);
-            }
-            else if (type == "log_threshold") {
-                const threshold = config?.ask?.log_threshold_text;
-                action.setTitle(threshold);
                 action.setImage(black_dataUrl);
             }
             else if (type == "none") {
