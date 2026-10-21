@@ -93,7 +93,7 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
         }
         try {
             if (type == "fim_model") {
-                agent_selection(config?.ask?.fim?.model, "fim/")
+                agent_selection(config?.ask?.fim?.model, "pred/")
             }
             else if (type == "rewrite_model") {
                 agent_selection(config?.ask?.rewrite?.model, "re/")
@@ -110,7 +110,7 @@ export function update_dynamic_button(action: KeyAction<TriggerMacroSettings>, s
             else if (type == "fim_reasoning_level") {
                 const model = config?.ask?.fim?.model;
                 const level = (config?.ask as any)[model].fim_reasoning_level || "";
-                action.setTitle(`fim/\n${level.toUpperCase()}`);
+                action.setTitle(`pred/\n${level.toUpperCase()}`);
                 action.setImage(black_dataUrl);
             }
             else if (type == "agents_reasoning_level") {
